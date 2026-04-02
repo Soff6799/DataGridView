@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{E90F0912-D59B-4573-B1CA-B20DD4E2DCE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{7F4924B5-EEB6-4B2B-860D-0D819A632413}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{7C3D8A25-73C7-4B91-B193-BE97C0DFF45B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Services", "BL\NailWarehouse.Services\NailWarehouse.Services.csproj", "{EF1F11E2-84E1-426C-87B6-5FA551E11599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Services.Contracts", "BL\NailWarehouse.Services.Contracts\NailWarehouse.Services.Contracts.csproj", "{EAB0DBA2-DC95-441F-A965-1656699B5D7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Models", "DAL\NailWarehouse.Models\NailWarehouse.Models.csproj", "{4D4525EF-961D-42F4-B3D9-B0A3F9A7787E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Storage.Contracts", "DAL\NailWarehouse.Storage.Contracts\NailWarehouse.Storage.Contracts.csproj", "{69DA3976-2709-41AF-AA2B-2084DDF21AF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Storage.InMemory", "DAL\NailWarehouse.Storage.InMemory\NailWarehouse.Storage.InMemory.csproj", "{EAB5D0C1-90D4-47BD-90AE-C29C48F85AD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Desktop", "UI\NailWarehouse.Desktop\NailWarehouse.Desktop.csproj", "{C121A6F0-8B0A-4831-903D-7749B9FBF830}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF1F11E2-84E1-426C-87B6-5FA551E11599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1F11E2-84E1-426C-87B6-5FA551E11599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1F11E2-84E1-426C-87B6-5FA551E11599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1F11E2-84E1-426C-87B6-5FA551E11599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAB0DBA2-DC95-441F-A965-1656699B5D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAB0DBA2-DC95-441F-A965-1656699B5D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAB0DBA2-DC95-441F-A965-1656699B5D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAB0DBA2-DC95-441F-A965-1656699B5D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4525EF-961D-42F4-B3D9-B0A3F9A7787E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4525EF-961D-42F4-B3D9-B0A3F9A7787E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4525EF-961D-42F4-B3D9-B0A3F9A7787E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4525EF-961D-42F4-B3D9-B0A3F9A7787E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69DA3976-2709-41AF-AA2B-2084DDF21AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DA3976-2709-41AF-AA2B-2084DDF21AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69DA3976-2709-41AF-AA2B-2084DDF21AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69DA3976-2709-41AF-AA2B-2084DDF21AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAB5D0C1-90D4-47BD-90AE-C29C48F85AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAB5D0C1-90D4-47BD-90AE-C29C48F85AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAB5D0C1-90D4-47BD-90AE-C29C48F85AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAB5D0C1-90D4-47BD-90AE-C29C48F85AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C121A6F0-8B0A-4831-903D-7749B9FBF830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C121A6F0-8B0A-4831-903D-7749B9FBF830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C121A6F0-8B0A-4831-903D-7749B9FBF830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C121A6F0-8B0A-4831-903D-7749B9FBF830}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF1F11E2-84E1-426C-87B6-5FA551E11599} = {7F4924B5-EEB6-4B2B-860D-0D819A632413}
+		{EAB0DBA2-DC95-441F-A965-1656699B5D7B} = {7F4924B5-EEB6-4B2B-860D-0D819A632413}
+		{4D4525EF-961D-42F4-B3D9-B0A3F9A7787E} = {7C3D8A25-73C7-4B91-B193-BE97C0DFF45B}
+		{69DA3976-2709-41AF-AA2B-2084DDF21AF9} = {7C3D8A25-73C7-4B91-B193-BE97C0DFF45B}
+		{EAB5D0C1-90D4-47BD-90AE-C29C48F85AD7} = {7C3D8A25-73C7-4B91-B193-BE97C0DFF45B}
+		{C121A6F0-8B0A-4831-903D-7749B9FBF830} = {E90F0912-D59B-4573-B1CA-B20DD4E2DCE2}
+	EndGlobalSection
+EndGlobal
