@@ -1,4 +1,4 @@
-﻿namespace Nail_Warehouse;
+﻿namespace NailWarehouse;
 
 partial class MainForm
 {
@@ -211,7 +211,7 @@ partial class MainForm
         // MainForm
         //
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        System.Windows.Forms.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(953, 450);
         Controls.Add(statusStrip1);
         Controls.Add(dataGridViewMain);

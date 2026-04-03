@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Nail_Warehouse;
+namespace NailWarehouse;
 
 partial class ProductEditForm
 {

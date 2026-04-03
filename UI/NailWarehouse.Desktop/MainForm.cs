@@ -1,4 +1,4 @@
-namespace Nail_Warehouse;
+namespace NailWarehouse;
 
 using NailWarehouse.Models;
 using NailWarehouse.Services.Contracts;
@@ -14,7 +14,7 @@ public partial class MainForm : Form
     /// <summary>
     /// Инициализирует окно, загружает данные и настраивает таблицу.
     /// </summary>
-    public MainForm(IProductService service)  
+    public MainForm(IProductService service)
     {
         InitializeComponent();
         productService = service;

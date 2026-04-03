@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Nail_Warehouse {
+namespace NailWarehouse {
     using System;
     
     

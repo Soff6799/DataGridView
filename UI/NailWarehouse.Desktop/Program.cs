@@ -1,4 +1,4 @@
-namespace Nail_Warehouse;
+namespace NailWarehouse;
 
 using NailWarehouse.Services;
 using NailWarehouse.Services.Contracts;

@@ -1,4 +1,4 @@
-namespace Nail_Warehouse;
+namespace NailWarehouse;
 
 using System.Windows.Forms;
 using NailWarehouse.Models;
