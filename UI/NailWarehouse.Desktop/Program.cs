@@ -1,8 +1,8 @@
 namespace NailWarehouse;
 
-using NailWarehouse.Services;
-using NailWarehouse.Services.Contracts;
-using NailWarehouse.Storage.InMemory;
+using Services;
+using Services.Contracts;
+using Storage.InMemory;
 using System;
 using System.Windows.Forms;
 

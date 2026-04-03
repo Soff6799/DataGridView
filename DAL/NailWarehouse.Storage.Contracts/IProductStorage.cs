@@ -1,5 +1,6 @@
 using NailWarehouse.Models;
-namespace NailWarehouse.Storage.Contracts;
+
+namespace NailWarehouse.Storage.InMemory;
 
 /// <summary>
 /// Интерфейс хранилища товаров. Определяет доступ к данным.

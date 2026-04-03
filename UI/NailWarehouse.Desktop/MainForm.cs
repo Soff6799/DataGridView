@@ -1,7 +1,7 @@
 namespace NailWarehouse;
 
-using NailWarehouse.Models;
-using NailWarehouse.Services.Contracts;
+using Models;
+using Services.Contracts;
 
 /// <summary>
 /// Главное окно приложения для управления складом товаров.

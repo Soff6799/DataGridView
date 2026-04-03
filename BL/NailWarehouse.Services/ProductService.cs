@@ -1,7 +1,8 @@
+using NailWarehouse.Storage.InMemory;
+
 namespace NailWarehouse.Services;
 using Models;
 using Contracts;
-using NailWarehouse.Storage.Contracts;
 
 /// <summary>
 /// Сервис для работы с товарами.

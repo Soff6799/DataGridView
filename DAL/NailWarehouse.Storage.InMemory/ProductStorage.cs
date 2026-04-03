@@ -1,6 +1,5 @@
 namespace NailWarehouse.Storage.InMemory;
 using Models;
-using Contracts; 
 
 /// <summary>
 /// Реализация хранилища данных в оперативной памяти (In-Memory).

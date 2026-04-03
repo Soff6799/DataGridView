@@ -17,7 +17,6 @@ partial class MainForm
         {
             components.Dispose();
         }
-
         base.Dispose(disposing);
     }
 
@@ -211,7 +210,7 @@ partial class MainForm
         // MainForm
         //
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-        System.Windows.Forms.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(953, 450);
         Controls.Add(statusStrip1);
         Controls.Add(dataGridViewMain);

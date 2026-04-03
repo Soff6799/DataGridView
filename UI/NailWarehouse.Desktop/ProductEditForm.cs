@@ -1,7 +1,7 @@
 namespace NailWarehouse;
 
 using System.Windows.Forms;
-using NailWarehouse.Models;
+using Models;
 using System.Text;
 
 /// <summary>
@@ -50,6 +50,11 @@ public partial class ProductEditForm : Form
         var priceBinding = new Binding("Text", editedProduct, nameof(Product.Price),
             true, DataSourceUpdateMode.OnValidation) { FormatString = ProductEditFormConstants.PriceFormat };
         textBoxPrice.DataBindings.Add(priceBinding);
+
+        textBoxName.Validating += RequiredField_Validating;
+        textBoxPrice.Validating += RequiredField_Validating;
+        comboBoxSize.Validating += RequiredField_Validating;
+        comboBoxMaterial.Validating += RequiredField_Validating;
     }
 
     private void btnSave_Click(object sender, EventArgs e)
@@ -77,32 +82,34 @@ public partial class ProductEditForm : Form
         }
     }
 
+    private void RequiredField_Validating(object? sender, System.ComponentModel.CancelEventArgs e)
+    {
+        var control = sender as Control;
+        var isEmpty = string.IsNullOrEmpty(control?.Text);
+        var isZero = control?.Text is "0" or "0,00";
+        if (isEmpty || isZero)
+        {
+            if (control != null)
+            {
+                errorProvider.SetError(control, "Это поле обязательно для заполнения!");
+            }
+
+            e.Cancel = true;
+        }
+        else
+        {
+            if (control != null)
+            {
+                errorProvider.SetError(control, string.Empty);
+            }
+
+            e.Cancel = false;
+        }
+    }
+
     private bool ValidateData()
     {
-        errorProvider.Clear();
-        var isValid = true;
-
-        if (string.IsNullOrWhiteSpace(textBoxName.Text))
-        {
-            errorProvider.SetError(textBoxName, ProductEditFormConstants.ErrEmptyName);
-            isValid = false;
-        }
-        if (string.IsNullOrWhiteSpace(comboBoxSize.Text))
-        {
-            errorProvider.SetError(comboBoxSize, ProductEditFormConstants.ErrEmptySize);
-            isValid = false;
-        }
-        if (string.IsNullOrWhiteSpace(comboBoxMaterial.Text))
-        {
-            errorProvider.SetError(comboBoxMaterial, ProductEditFormConstants.ErrEmptyMaterial);
-            isValid = false;
-        }
-        if (!decimal.TryParse(textBoxPrice.Text, out var price) || price <= 0)
-        {
-            errorProvider.SetError(textBoxPrice, ProductEditFormConstants.ErrInvalidPrice);
-            isValid = false;
-        }
-        return isValid;
+        return ValidateChildren();
     }
 
     private void btnCancel_Click(object sender, EventArgs e)
