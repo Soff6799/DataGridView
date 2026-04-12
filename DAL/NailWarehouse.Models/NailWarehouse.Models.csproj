@@ -4,6 +4,17 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageId>NailWarehouse.Models</PackageId>
+        <Title>Nail Warehouse Models Library</Title>
+        <Authors>Soff6799</Authors>
+        <Description>Основные модели данных для системы управления складом гвоздей. Включает классы для Товара, его свойств (размер, материал, цена) и учета на складе.</Description>
+        <PackageTags>NailWarehouse, Nail, Warehouse, Models, Product, Entity, Data, Inventory, Management, CSharp, .NET</PackageTags>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
-
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
 </Project>

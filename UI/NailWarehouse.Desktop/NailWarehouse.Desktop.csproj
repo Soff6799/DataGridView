@@ -30,7 +30,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\BL\NailWarehouse.Services.Contracts\NailWarehouse.Services.Contracts.csproj" />
       <ProjectReference Include="..\..\BL\NailWarehouse.Services\NailWarehouse.Services.csproj" />
-      <ProjectReference Include="..\..\DAL\NailWarehouse.Models\NailWarehouse.Models.csproj" />
+      <PackageReference Include="NailWarehouse.Models" Version="1.0.0" />
       <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.Contracts\NailWarehouse.Storage.Contracts.csproj" />
       <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.InMemory\NailWarehouse.Storage.InMemory.csproj" />
     </ItemGroup>

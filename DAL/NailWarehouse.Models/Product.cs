@@ -45,15 +45,15 @@ public class Product
         Size = size;
         Material = material;
         Quantity = quantity;
-        MinQuantity = minQuantity; 
+        MinQuantity = minQuantity;
         Price = price;
     }
-    
+
     /// <summary>
     /// Рассчитывает общую стоимость текущего товара
     /// </summary>
     public decimal TotalSum => Price * Quantity;
-    
+
     /// <summary>
     /// Инициализирует новый пустой экземпляр класса Product.
     /// </summary>
