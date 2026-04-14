@@ -5,6 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>NailWarehouse.Models</PackageId>
+        <Version>1.0.0</Version>
+        <Product>NailWarehouse</Product>
         <Title>Nail Warehouse Models Library</Title>
         <Authors>Soff6799</Authors>
         <Description>Основные модели данных для системы управления складом гвоздей. Включает классы для Товара, его свойств (размер, материал, цена) и учета на складе.</Description>
