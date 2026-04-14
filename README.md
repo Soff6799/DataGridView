@@ -1,6 +1,6 @@
 ### INFORMATION: Манжосова София Александровна ИП-24-4
-### ТГ: (@Sofishokc) - https://t.me/Sofishokc
-### upd:14.04.2026
+#### ТГ: (@Sofishokc) - https://t.me/Sofishokc
+#### upd:14.04.2026
 - - - - 
 # Название проекта: DataGridView (DGV)
 ### 1 вариант: Автоматизация склада гвоздей
