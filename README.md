@@ -1,9 +1,11 @@
 ### INFORMATION: Манжосова София Александровна ИП-24-4
-### ТГ: (@Sofishokc) - https://t.me/Sofishokc
-### upd:14.04.2026
+#### ТГ: (@Sofishokc) - https://t.me/Sofishokc
+#### upd:14.04.2026
 - - - - 
 # Название проекта: DataGridView (DGV)
 ### 1 вариант: Автоматизация склада гвоздей
 - - - -
 ## Задание: Создание собственного nuget-пакета
-### Вынесла проект NailWarehouse.Models в Nuget-библиотеку и подключила через пакет Nuget.
+#### Вынесла проект NailWarehouse.Models в Nuget-библиотеку и подключила через пакет Nuget.
+
+
