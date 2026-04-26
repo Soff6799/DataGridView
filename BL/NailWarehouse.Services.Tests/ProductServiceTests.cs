@@ -1,5 +1,4 @@
-﻿using Xunit;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Moq;
 using NailWarehouse.Models;
 using NailWarehouse.Storage.InMemory;
@@ -135,7 +134,6 @@ public class ProductServiceTests
         stats.totalQty.Should().Be(25);
         stats.deficit.Should().NotBeNull();
         stats.deficit.Name.Should().Be("Товар2");
-
     }
 
     /// <summary>
@@ -148,8 +146,8 @@ public class ProductServiceTests
         var mockStorage = new Mock<IProductStorage>();
         var data = new List<Product>
         {
-            new Product { Name = "Товар 1", Price = 10.50m},
-            new Product { Name = "Товар 2", Price = 20.25m}
+            new() { Name = "Товар 1", Price = 10.50m},
+            new() { Name = "Товар 2", Price = 20.25m}
         };
 
         mockStorage.Setup(s => s.Products).Returns(data);
@@ -161,6 +159,4 @@ public class ProductServiceTests
         // Assert
         stats.avgPrice.Should().Be(15.375m);
     }
-
-
 }

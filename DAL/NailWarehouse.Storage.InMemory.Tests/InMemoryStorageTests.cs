@@ -1,6 +1,6 @@
-﻿using Xunit;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NailWarehouse.Models;
+
 namespace NailWarehouse.Storage.InMemory.Tests;
 
 /// <summary>
@@ -137,7 +137,5 @@ public class InMemoryStorageTests
         // Assert
         storage.Products.First().Name.Should().Be(newName);
         storage.Products.First().Name.Should().NotBe(oldName);
-
     }
-
 }
