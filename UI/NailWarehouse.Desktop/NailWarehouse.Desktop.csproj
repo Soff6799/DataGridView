@@ -30,9 +30,18 @@
     <ItemGroup>
       <ProjectReference Include="..\..\BL\NailWarehouse.Services.Contracts\NailWarehouse.Services.Contracts.csproj" />
       <ProjectReference Include="..\..\BL\NailWarehouse.Services\NailWarehouse.Services.csproj" />
-      <PackageReference Include="NailWarehouse.Models" Version="1.0.0" />
       <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.Contracts\NailWarehouse.Storage.Contracts.csproj" />
       <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.InMemory\NailWarehouse.Storage.InMemory.csproj" />
     </ItemGroup>
-
+  
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="4.3.2-dev-02430" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.6" />
+    <PackageReference Include="NailWarehouse.Models" Version="1.0.0" />
+  </ItemGroup>
+  
 </Project>
