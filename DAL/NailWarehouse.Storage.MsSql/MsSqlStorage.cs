@@ -6,36 +6,35 @@ namespace NailWarehouse.Storage.MsSql;
 
 public class MsSqlStorage: IProductStorage
 {
-    IReadOnlyCollection<Product> IProductStorage.GetAllProducts()
+    public async Task<IReadOnlyCollection<Product>> GetAllProductsAsync()
     {
         using var db = new ClassMagazineContext();
-        List<Product> items = db.Products
+        return await db.Products
             .AsNoTracking()
             .OrderBy(x => x.Name)
-            .ToList();
-        return items;
+            .ToListAsync();
     }
 
-    public Product Add(Product product)
+    public async Task<Product> AddAsync(Product product)
     {
         using var db = new ClassMagazineContext();
         db.Products.Add(product);
-        db.SaveChanges();
+        await db.SaveChangesAsync();
         return product;
     }
 
-    public Product? GetProduct(Guid id)
+    public async Task<Product?> GetProductAsync(Guid id)
     {
         using var db = new ClassMagazineContext();
-        return db.Products
-            .FirstOrDefault(x => x.Id == id);
+        return await db.Products
+            .FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    bool IProductStorage.TryEdit(Product product)
+    async Task<bool> IProductStorage.TryEditAsync(Product product)
     {
         using var db = new ClassMagazineContext();
-        Product? item = db.Products
-            .FirstOrDefault(x => x.Id == product.Id);
+        Product? item = await db.Products
+            .FirstOrDefaultAsync(x => x.Id == product.Id);
         if (item == null)
         {
             return false;
@@ -48,21 +47,21 @@ public class MsSqlStorage: IProductStorage
         item.Price = product.Price;
 
         db.Products.Update(item);
-        db.SaveChanges();
+        await db.SaveChangesAsync();
         return true;
     }
 
-    public bool TryDelete(Guid id)
+    public async Task<bool> TryDeleteAsync(Guid id)
     {
         using var db = new ClassMagazineContext();
-        var item = db.Products
-            .FirstOrDefault(x => x.Id == id);
+        var item = await db.Products
+            .FirstOrDefaultAsync(x => x.Id == id);
         if (item == null)
         {
             return false;
         }
         db.Products.Remove(item);
-        db.SaveChanges();
+        await db.SaveChangesAsync();
         return true;
     }
 }

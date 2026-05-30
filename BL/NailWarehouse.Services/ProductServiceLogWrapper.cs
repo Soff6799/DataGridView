@@ -26,12 +26,12 @@ public class ProductServiceLogWrapper : IProductService
     /// <summary>
     /// Добавляет товар в систему с замером времени выполнения операции
     /// </summary>
-    public void Add(Product product)
+    public async Task AddAsync(Product product)
     {
         var sw = Stopwatch.StartNew();
         try
         {
-            innerServiceLog.Add(product);
+            await innerServiceLog.AddAsync(product);
         }
         finally
         {
@@ -43,12 +43,12 @@ public class ProductServiceLogWrapper : IProductService
     /// <summary>
     /// Удаляет товар из системы с замером времени выполнения операции
     /// </summary>
-    public void Remove(Product product)
+    public async Task RemoveAsync(Product product)
     {
         var sw = Stopwatch.StartNew();
         try
         {
-            innerServiceLog.Remove(product);
+            await innerServiceLog.RemoveAsync(product);
         }
         finally
         {
@@ -60,12 +60,12 @@ public class ProductServiceLogWrapper : IProductService
     /// <summary>
     /// Возвращает список всех товаров с замером времени выполнения операции
     /// </summary>
-    public List<Product> GetAll()
+    public async Task<List<Product>> GetAllAsync()
     {
         var sw = Stopwatch.StartNew();
         try
         {
-            return innerServiceLog.GetAll();
+            return await innerServiceLog.GetAllAsync();
         }
         finally
         {
@@ -77,12 +77,12 @@ public class ProductServiceLogWrapper : IProductService
     /// <summary>
     /// Получает аналитику по складу (статистику) с замером времени выполнения операции
     /// </summary>
-    public (int count, decimal avgPrice, int totalQty, Product? deficit) GetStats()
+    public async Task<(int count, decimal avgPrice, int totalQty, Product? deficit)> GetStatsAsync()
     {
         var sw = Stopwatch.StartNew();
         try
         {
-            return innerServiceLog.GetStats();
+            return await innerServiceLog.GetStatsAsync();
         }
         finally
         {

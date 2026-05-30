@@ -18,24 +18,28 @@ public class ProductService : IProductService
     /// <summary>
     /// Возвращает список всех товаров.
     /// </summary>
-    public List<Product> GetAll() => storage.GetAllProducts().ToList();
+    public async Task<List<Product>> GetAllAsync()
+    {
+        var products = await storage.GetAllProductsAsync();
+        return products.ToList();
+    }
 
     /// <summary>
     /// Добавляет новый товар.
     /// </summary>
-    public void Add(Product product) => storage.Add(product);
+    public async Task AddAsync(Product product) => await storage.AddAsync(product);
 
     /// <summary>
     /// Удаляет указанный товар.
     /// </summary>
-    public void Remove(Product product) => storage.TryDelete(product.Id);
+    public async Task RemoveAsync(Product product) => await storage.TryDeleteAsync(product.Id);
 
     /// <summary>
     /// Рассчитывает и возвращает статистику по товарам.
     /// </summary>
-    public (int count, decimal avgPrice, int totalQty, Product? deficit) GetStats()
+    public async Task<(int count, decimal avgPrice, int totalQty, Product? deficit)> GetStatsAsync()
     {
-        var list = storage.GetAllProducts();
+        var list = await storage.GetAllProductsAsync();
         if (!list.Any())
         {
             return (0, 0, 0, null);

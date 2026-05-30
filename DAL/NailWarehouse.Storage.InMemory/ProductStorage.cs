@@ -12,21 +12,30 @@ public class ProductStorage : IProductStorage
     /// </summary>
     public List<Product> Products { get; } = new();
 
-    public  IReadOnlyCollection<Product> GetAllProducts() => Products.AsReadOnly();
+    public Task<IReadOnlyCollection<Product>> GetAllProductsAsync()
+    {
+        IReadOnlyCollection<Product> readOnlyList = Products.AsReadOnly();
+        return Task.FromResult(readOnlyList);
+    }
 
-    public Product Add(Product product)
+    public Task<Product> AddAsync(Product product)
     {
         Products.Add(product);
-        return product;
+        return Task.FromResult(product);
     }
-    public Product? GetProduct(Guid id) => Products.FirstOrDefault(x => x.Id == id);
 
-    public bool TryEdit(Product product)
+    public Task<Product?> GetProductAsync(Guid id)
+    {
+        var product = Products.FirstOrDefault(x => x.Id == id);
+        return Task.FromResult(product);
+    }
+
+    public Task<bool> TryEditAsync(Product product)
     {
         var item = Products.FirstOrDefault(x => x.Id == product.Id);
         if (item == null)
         {
-            return false;
+            return Task.FromResult(false);
         }
         item.Name = product.Name;
         item.Size =  product.Size;
@@ -34,18 +43,18 @@ public class ProductStorage : IProductStorage
         item.Quantity =  product.Quantity;
         item.MinQuantity = product.MinQuantity;
         item.Price = product.Price;
-        return true;
+        return Task.FromResult(true);
     }
 
-    public bool TryDelete(Guid id)
+    public Task<bool> TryDeleteAsync(Guid id)
     {
         var item = Products.FirstOrDefault(x => x.Id == id);
         if (item == null)
         {
-            return false;
+            return Task.FromResult(false);
         }
         Products.Remove(item);
-        return true;
+        return Task.FromResult(true);
     }
 
     /// <summary>
