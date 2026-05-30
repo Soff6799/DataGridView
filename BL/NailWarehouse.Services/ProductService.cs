@@ -1,7 +1,7 @@
-using NailWarehouse.Storage.InMemory;
+using NailWarehouse.Storage.Contracts;
 
 namespace NailWarehouse.Services;
-using Models;
+using NailWarehouse.Models;
 using Contracts;
 
 /// <summary>
@@ -18,24 +18,24 @@ public class ProductService : IProductService
     /// <summary>
     /// Возвращает список всех товаров.
     /// </summary>
-    public List<Product> GetAll() => storage.Products;
+    public List<Product> GetAll() => storage.GetAllProducts().ToList();
 
     /// <summary>
     /// Добавляет новый товар.
     /// </summary>
-    public void Add(Product product) => storage.Products.Add(product);
+    public void Add(Product product) => storage.Add(product);
 
     /// <summary>
     /// Удаляет указанный товар.
     /// </summary>
-    public void Remove(Product product) => storage.Products.Remove(product);
+    public void Remove(Product product) => storage.TryDelete(product.Id);
 
     /// <summary>
     /// Рассчитывает и возвращает статистику по товарам.
     /// </summary>
     public (int count, decimal avgPrice, int totalQty, Product? deficit) GetStats()
     {
-        var list = storage.Products;
+        var list = storage.GetAllProducts();
         if (!list.Any())
         {
             return (0, 0, 0, null);

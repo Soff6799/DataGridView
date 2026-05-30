@@ -1,11 +1,15 @@
 using NailWarehouse.Models;
 
-namespace NailWarehouse.Storage.InMemory;
+namespace NailWarehouse.Storage.Contracts;
 
 /// <summary>
 /// Интерфейс хранилища товаров. Определяет доступ к данным.
 /// </summary>
 public interface IProductStorage
 {
-    List<Product> Products { get; }
+    IReadOnlyCollection<Product> GetAllProducts();
+    Product Add(Product product);
+    Product? GetProduct(Guid id);
+    bool TryEdit(Product product);
+    bool TryDelete(Guid id);
 }

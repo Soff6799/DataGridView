@@ -1,5 +1,6 @@
 namespace NailWarehouse.Storage.InMemory;
-using Models;
+using NailWarehouse.Models;
+using NailWarehouse.Storage.Contracts;
 
 /// <summary>
 /// Реализация хранилища данных в оперативной памяти (In-Memory).
@@ -10,6 +11,42 @@ public class ProductStorage : IProductStorage
     /// Список товаров, хранящийся в памяти приложения.
     /// </summary>
     public List<Product> Products { get; } = new();
+
+    public  IReadOnlyCollection<Product> GetAllProducts() => Products.AsReadOnly();
+
+    public Product Add(Product product)
+    {
+        Products.Add(product);
+        return product;
+    }
+    public Product? GetProduct(Guid id) => Products.FirstOrDefault(x => x.Id == id);
+
+    public bool TryEdit(Product product)
+    {
+        var item = Products.FirstOrDefault(x => x.Id == product.Id);
+        if (item == null)
+        {
+            return false;
+        }
+        item.Name = product.Name;
+        item.Size =  product.Size;
+        item.Material = product.Material;
+        item.Quantity =  product.Quantity;
+        item.MinQuantity = product.MinQuantity;
+        item.Price = product.Price;
+        return true;
+    }
+
+    public bool TryDelete(Guid id)
+    {
+        var item = Products.FirstOrDefault(x => x.Id == id);
+        if (item == null)
+        {
+            return false;
+        }
+        Products.Remove(item);
+        return true;
+    }
 
     /// <summary>
     /// Инициализирует сервис и загружает начальные товары.

@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Moq;
 using NailWarehouse.Models;
-using NailWarehouse.Storage.InMemory;
+using NailWarehouse.Storage.Contracts;
 
 namespace NailWarehouse.Services.Tests;
 
@@ -19,7 +19,7 @@ public class ProductServiceTests
         // Arrange
         var mockStorage = new Mock<IProductStorage>();
         var data = new List<Product>{new() {Name = "Гвоздь"}};
-        mockStorage.Setup(s => s.Products).Returns(data);
+        mockStorage.Setup(s => s.GetAllProducts()).Returns(data);
         var service = new ProductService(mockStorage.Object);
 
         // Act
@@ -38,7 +38,7 @@ public class ProductServiceTests
     {
         // Arrange
         var mockStorage = new Mock<IProductStorage>();
-        mockStorage.Setup(s => s.Products).Returns(new List<Product>());
+        mockStorage.Setup(s => s.GetAllProducts()).Returns(new List<Product>());
         var service = new ProductService(mockStorage.Object);
 
         // Act
@@ -57,7 +57,7 @@ public class ProductServiceTests
         // Arrange
         var mockStorage = new Mock<IProductStorage>();
         var list = new List<Product>();
-        mockStorage.Setup(s => s.Products).Returns(list);
+        mockStorage.Setup(s => s.GetAllProducts()).Returns(list);
         var service = new ProductService(mockStorage.Object);
         var newProduct = new Product { Name = "Новый тоывар" };
 
@@ -79,7 +79,7 @@ public class ProductServiceTests
         var mockStorage = new Mock<IProductStorage>();
         var p = new Product{Name = "Удаляемый"};
         var list = new List<Product>{p};
-        mockStorage.Setup(s => s.Products).Returns(list);
+        mockStorage.Setup(s => s.GetAllProducts()).Returns(list);
         var service = new ProductService(mockStorage.Object);
 
         // Act
@@ -97,7 +97,7 @@ public class ProductServiceTests
     {
         // Arrange
         var mockStorage = new Mock<IProductStorage>();
-        mockStorage.Setup(s => s.Products).Returns([]);
+        mockStorage.Setup(s => s.GetAllProducts()).Returns([]);
         var service = new ProductService(mockStorage.Object);
 
         // Act
@@ -122,7 +122,7 @@ public class ProductServiceTests
         {
             new() { Name = "Товар1", Price = 100, Quantity = 20 }, new() { Name = "Товар2", Price = 200, Quantity = 5 },
         };
-        mockStorage.Setup(s => s.Products).Returns(data);
+        mockStorage.Setup(s => s.GetAllProducts()).Returns(data);
         var service = new ProductService(mockStorage.Object);
 
         // Act
@@ -150,7 +150,7 @@ public class ProductServiceTests
             new() { Name = "Товар 2", Price = 20.25m}
         };
 
-        mockStorage.Setup(s => s.Products).Returns(data);
+        mockStorage.Setup(s => s.GetAllProducts()).Returns(data);
         var service = new ProductService(mockStorage.Object);
 
         // Act
