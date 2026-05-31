@@ -4,8 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace NailWarehouse.Storage.MsSql;
 
+/// <summary>
+/// Реализация хранилища данных товаров для SQL Server с использованием Entity Framework Core.
+/// Все операции выполняются асинхронно.
+/// </summary>
 public class MsSqlStorage: IProductStorage
 {
+    /// <summary>
+    /// Асинхронно получает коллекцию всех товаров из базы данных.
+    /// </summary>
     public async Task<IReadOnlyCollection<Product>> GetAllProductsAsync()
     {
         using var db = new ClassMagazineContext();
@@ -15,6 +22,9 @@ public class MsSqlStorage: IProductStorage
             .ToListAsync();
     }
 
+    /// <summary>
+    /// Асинхронно добавляет новый товар в базу данных.
+    /// </summary>
     public async Task<Product> AddAsync(Product product)
     {
         using var db = new ClassMagazineContext();
@@ -23,6 +33,9 @@ public class MsSqlStorage: IProductStorage
         return product;
     }
 
+    /// <summary>
+    /// Асинхронно получает товар по его уникальному идентификатору из базы данных.
+    /// </summary>
     public async Task<Product?> GetProductAsync(Guid id)
     {
         using var db = new ClassMagazineContext();
@@ -30,6 +43,9 @@ public class MsSqlStorage: IProductStorage
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 
+    /// <summary>
+    /// Асинхронно пытается обновить существующий товар в базе данных.
+    /// </summary>
     async Task<bool> IProductStorage.TryEditAsync(Product product)
     {
         using var db = new ClassMagazineContext();
@@ -51,6 +67,9 @@ public class MsSqlStorage: IProductStorage
         return true;
     }
 
+    /// <summary>
+    /// Асинхронно пытается удалить товар из базы данных по его уникальному идентификатору.
+    /// </summary>
     public async Task<bool> TryDeleteAsync(Guid id)
     {
         using var db = new ClassMagazineContext();

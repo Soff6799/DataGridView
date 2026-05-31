@@ -5,11 +5,15 @@ using NailWarehouse.Models;
 using Contracts;
 
 /// <summary>
-/// Сервис для работы с товарами.
+/// Предоставляет бизнес-логику для работы с товарами, используя асинхронные операции.
 /// </summary>
 public class ProductService : IProductService
 {
     private readonly IProductStorage storage;
+
+    /// <summary>
+    /// Инициализирует новый экземпляр класса <see cref="ProductService"/>.
+    /// </summary>
     public ProductService(IProductStorage storage)
     {
         this.storage = storage;
