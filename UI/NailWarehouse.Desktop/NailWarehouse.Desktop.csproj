@@ -32,7 +32,7 @@
       <ProjectReference Include="..\..\BL\NailWarehouse.Services\NailWarehouse.Services.csproj" />
       <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.Contracts\NailWarehouse.Storage.Contracts.csproj" />
       <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.InMemory\NailWarehouse.Storage.InMemory.csproj" />
-      <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.MsSql\NailWarehouse.Storage.MsSql.csproj" />
+      <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.Db\NailWarehouse.Storage.Db.csproj" />
     </ItemGroup>
   
   <ItemGroup>

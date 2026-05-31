@@ -1,8 +1,7 @@
-using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using NailWarehouse.Models;
 
-namespace NailWarehouse.Storage.MsSql;
+namespace NailWarehouse.Storage.Db;
 
 /// <summary>
 /// Контекст базы данных для взаимодействия с SQL Server посредством Entity Framework Core.

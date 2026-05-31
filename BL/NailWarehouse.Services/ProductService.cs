@@ -1,7 +1,7 @@
 using NailWarehouse.Storage.Contracts;
 
 namespace NailWarehouse.Services;
-using NailWarehouse.Models;
+using Models;
 using Contracts;
 
 /// <summary>
@@ -44,7 +44,7 @@ public class ProductService : IProductService
     public async Task<(int count, decimal avgPrice, int totalQty, Product? deficit)> GetStatsAsync()
     {
         var list = await storage.GetAllProductsAsync();
-        if (!list.Any())
+        if (list.Count == 0)
         {
             return (0, 0, 0, null);
         }

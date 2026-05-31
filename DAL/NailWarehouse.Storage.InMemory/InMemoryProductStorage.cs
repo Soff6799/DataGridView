@@ -1,16 +1,16 @@
 namespace NailWarehouse.Storage.InMemory;
-using NailWarehouse.Models;
-using NailWarehouse.Storage.Contracts;
+using Models;
+using Contracts;
 
 /// <summary>
 /// Реализация хранилища данных в оперативной памяти (In-Memory).
 /// </summary>
-public class ProductStorage : IProductStorage
+public class InMemoryProductStorage : IProductStorage
 {
     /// <summary>
     /// Список товаров, хранящийся в памяти приложения.
     /// </summary>
-    public List<Product> Products { get; } = new();
+    public List<Product> Products { get; } = [];
 
     /// <summary>
     /// Асинхронно получает коллекцию всех товаров из хранилища.
@@ -73,10 +73,10 @@ public class ProductStorage : IProductStorage
     }
 
     /// <summary>
-    /// Инициализирует новый экземпляр класса <see cref="ProductStorage"/>
+    /// Инициализирует новый экземпляр класса <see cref="InMemoryProductStorage"/>
     /// и загружает начальные товары.
     /// </summary>
-    public ProductStorage()
+    public InMemoryProductStorage()
     {
         Products.Add(new Product("Гвоздь оцинкованный", "3.0x70",
             "Сталь", 100, 20, 0.85m));

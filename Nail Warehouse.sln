@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Storage.InMem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Services.Tests", "BL\NailWarehouse.Services.Tests\NailWarehouse.Services.Tests.csproj", "{7FC1525A-C147-4589-9AAC-02BADCDC737A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Storage.MsSql", "DAL\NailWarehouse.Storage.MsSql\NailWarehouse.Storage.MsSql.csproj", "{D60B8643-8483-4F29-A040-65965FB4EEB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NailWarehouse.Storage.Db", "DAL\NailWarehouse.Storage.Db\NailWarehouse.Storage.Db.csproj", "{D60B8643-8483-4F29-A040-65965FB4EEB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

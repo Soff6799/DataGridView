@@ -1,4 +1,4 @@
-using NailWarehouse.Storage.MsSql;
+using NailWarehouse.Storage.Db;
 
 namespace NailWarehouse;
 
@@ -34,7 +34,7 @@ static internal class Program
         });
         var logger = loggerFactory.CreateLogger<ProductServiceLogWrapper>();
         ApplicationConfiguration.Initialize();
-        var dbstorage = new MsSqlStorage();
+        var dbstorage = new EfProductStorage();
         var realService = new ProductService(dbstorage);
         IProductService service = new ProductServiceLogWrapper(realService, logger);
         Application.Run(new MainForm(service));

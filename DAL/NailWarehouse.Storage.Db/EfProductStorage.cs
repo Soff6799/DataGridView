@@ -2,13 +2,13 @@ using NailWarehouse.Models;
 using NailWarehouse.Storage.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace NailWarehouse.Storage.MsSql;
+namespace NailWarehouse.Storage.Db;
 
 /// <summary>
 /// Реализация хранилища данных товаров для SQL Server с использованием Entity Framework Core.
 /// Все операции выполняются асинхронно.
 /// </summary>
-public class MsSqlStorage: IProductStorage
+public class EfProductStorage: IProductStorage
 {
     /// <summary>
     /// Асинхронно получает коллекцию всех товаров из базы данных.
@@ -62,7 +62,6 @@ public class MsSqlStorage: IProductStorage
         item.MinQuantity = product.MinQuantity;
         item.Price = product.Price;
 
-        db.Products.Update(item);
         await db.SaveChangesAsync();
         return true;
     }
