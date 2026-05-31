@@ -9,20 +9,22 @@ public interface IProductService
     /// <summary>
     /// Возвращает список всех товаров.
     /// </summary>
-    List<Product> GetAll();
+    Task<List<Product>> GetAllAsync();
 
     /// <summary>
     /// Добавляет новый товар.
     /// </summary>
-    void Add(Product product);
+   Task AddAsync(Product product);
 
     /// <summary>
     /// Удаляет указанный товар.
     /// </summary>
-    void Remove(Product product);
+    Task RemoveAsync(Product product);
+
+    Task<bool> TryEditAsync(Product product);
 
     /// <summary>
     /// Рассчитывает и возвращает статистику по товарам.
     /// </summary>
-    (int count, decimal avgPrice, int totalQty, Product? deficit) GetStats();
+    Task<(int count, decimal avgPrice, int totalQty, Product? deficit)> GetStatsAsync();
 }

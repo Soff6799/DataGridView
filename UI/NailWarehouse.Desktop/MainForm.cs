@@ -18,11 +18,33 @@ public partial class MainForm : Form
     {
         InitializeComponent();
         productService = service;
-        source.DataSource = productService.GetAll();
+
         dataGridViewMain.AutoGenerateColumns = false;
         dataGridViewMain.DataSource = source;
         dataGridViewMain.CellPainting += DataGridViewMain_CellPainting;
-        SetStatistic();
+
+        Load += MainForm_Load;
+    }
+
+    private async void MainForm_Load(object? sender, EventArgs e)
+    {
+        await RefrashDataAsync();
+    }
+
+    private async Task RefrashDataAsync()
+    {
+        try
+        {
+            var products = await productService.GetAllAsync();
+            source.DataSource = null;
+            source.DataSource = products;
+            source.ResetBindings(false);
+            await SetStatisticAsync();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+        }
     }
 
     private void DataGridViewMain_CellPainting(object? sender, DataGridViewCellPaintingEventArgs e)
@@ -54,7 +76,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void toolStripButtonEditing_Click(object sender, EventArgs e)
+    private async void toolStripButtonEditing_Click(object sender, EventArgs e)
     {
         if (dataGridViewMain.SelectedRows.Count > 0 &&
             dataGridViewMain.SelectedRows[0].DataBoundItem is Product selectedProduct )
@@ -62,15 +84,15 @@ public partial class MainForm : Form
             var editForm = new ProductEditForm(selectedProduct);
             if (editForm.ShowDialog() == DialogResult.OK)
             {
-                source.ResetBindings(false);
-                SetStatistic();
+                await productService.TryEditAsync(selectedProduct);
+                await RefrashDataAsync();
             }
         }
     }
 
-    private void SetStatistic()
+    private async Task SetStatisticAsync()
     {
-        var stats = productService.GetStats();
+        var stats = await productService.GetStatsAsync();
         if (stats.count == 0)
         {
             statusLabelInfo.Text = MainFormConstants.StockEmpty;
@@ -82,7 +104,7 @@ public partial class MainForm : Form
                                $"Меньше всего: {stats.deficit?.Name} ({stats.deficit?.Quantity ?? 0} шт)";
     }
 
-    private void toolStripButtonAdd_Click(object sender, EventArgs e)
+    private async void toolStripButtonAdd_Click(object sender, EventArgs e)
     {
         Product newProduct = new Product
         {
@@ -96,13 +118,12 @@ public partial class MainForm : Form
         addForm.Text = MainFormConstants.TitleAddForm;
         if (addForm.ShowDialog() == DialogResult.OK)
         {
-            productService.Add(newProduct);
-            source.ResetBindings(false);
-            SetStatistic();
+            await productService.AddAsync(newProduct);
+            await RefrashDataAsync();
         }
     }
 
-    private void toolStripButtonDelete_Click(object sender, EventArgs e)
+    private async void toolStripButtonDelete_Click(object sender, EventArgs e)
     {
         if (dataGridViewMain.SelectedRows.Count > 0)
         {
@@ -119,9 +140,8 @@ public partial class MainForm : Form
             );
             if (result == DialogResult.Yes)
             {
-                productService.Remove(selectedProduct);
-                source.ResetBindings(false);
-                SetStatistic();
+                await productService.RemoveAsync(selectedProduct);
+                await RefrashDataAsync();
             }
         }
         else

@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.Contracts\NailWarehouse.Storage.Contracts.csproj" />
+      <ProjectReference Include="..\..\DAL\NailWarehouse.Storage.InMemory\NailWarehouse.Storage.InMemory.csproj" />
       <ProjectReference Include="..\NailWarehouse.Services.Contracts\NailWarehouse.Services.Contracts.csproj" />
     </ItemGroup>
 

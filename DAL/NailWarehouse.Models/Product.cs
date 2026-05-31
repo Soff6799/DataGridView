@@ -55,7 +55,22 @@ public class Product
     public decimal TotalSum => Price * Quantity;
 
     /// <summary>
-    /// Инициализирует новый пустой экземпляр класса Product.
+    /// Идентификатор продукта
     /// </summary>
-    public Product() { }
+    public Guid Id { get; set; }
+
+
+    /// <summary>
+    /// Инициализирует новый пустой экземпляр класса Product без параметров
+    /// </summary>
+    public Product()
+    {
+        Id = Guid.NewGuid();
+        Name = string.Empty;
+        Size = string.Empty;
+        Material = string.Empty;
+        Quantity = 0;
+        MinQuantity = 0;
+        Price = 0;
+    }
 }
