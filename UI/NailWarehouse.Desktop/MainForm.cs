@@ -26,7 +26,7 @@ public partial class MainForm : Form
         Load += MainForm_Load;
     }
 
-    private async void MainForm_Load(object sender, EventArgs e)
+    private async void MainForm_Load(object? sender, EventArgs e)
     {
         await RefrashDataAsync();
     }
@@ -36,6 +36,7 @@ public partial class MainForm : Form
         try
         {
             var products = await productService.GetAllAsync();
+            source.DataSource = null;
             source.DataSource = products;
             source.ResetBindings(false);
             await SetStatisticAsync();
@@ -83,6 +84,7 @@ public partial class MainForm : Form
             var editForm = new ProductEditForm(selectedProduct);
             if (editForm.ShowDialog() == DialogResult.OK)
             {
+                await productService.TryEditAsync(selectedProduct);
                 await RefrashDataAsync();
             }
         }
@@ -117,8 +119,7 @@ public partial class MainForm : Form
         if (addForm.ShowDialog() == DialogResult.OK)
         {
             await productService.AddAsync(newProduct);
-            source.ResetBindings(false);
-            await SetStatisticAsync();
+            await RefrashDataAsync();
         }
     }
 
@@ -140,8 +141,7 @@ public partial class MainForm : Form
             if (result == DialogResult.Yes)
             {
                 await productService.RemoveAsync(selectedProduct);
-                source.ResetBindings(false);
-                await SetStatisticAsync();
+                await RefrashDataAsync();
             }
         }
         else

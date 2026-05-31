@@ -75,6 +75,23 @@ public class ProductServiceLogWrapper : IProductService
     }
 
     /// <summary>
+    /// Изменяет товар в системе с замером времени выполнения операции
+    /// </summary>
+    public async Task<bool> TryEditAsync(Product product)
+    {
+        var sw = Stopwatch.StartNew();
+        try
+        {
+            return await innerServiceLog.TryEditAsync(product);
+        }
+        finally
+        {
+            sw.Stop();
+            loggerLog.LogInformation("Метод TryEdit выполнен за {Elapsed} мс", sw.ElapsedMilliseconds);
+        }
+    }
+
+    /// <summary>
     /// Получает аналитику по складу (статистику) с замером времени выполнения операции
     /// </summary>
     public async Task<(int count, decimal avgPrice, int totalQty, Product? deficit)> GetStatsAsync()

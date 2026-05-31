@@ -21,6 +21,8 @@ public interface IProductService
     /// </summary>
     Task RemoveAsync(Product product);
 
+    Task<bool> TryEditAsync(Product product);
+
     /// <summary>
     /// Рассчитывает и возвращает статистику по товарам.
     /// </summary>

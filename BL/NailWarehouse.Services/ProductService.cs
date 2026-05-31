@@ -39,6 +39,11 @@ public class ProductService : IProductService
     public async Task RemoveAsync(Product product) => await storage.TryDeleteAsync(product.Id);
 
     /// <summary>
+    /// Асинхронно обновляет данные товара.
+    /// </summary>
+    public async Task<bool> TryEditAsync(Product product) => await storage.TryEditAsync(product);
+
+    /// <summary>
     /// Рассчитывает и возвращает статистику по товарам.
     /// </summary>
     public async Task<(int count, decimal avgPrice, int totalQty, Product? deficit)> GetStatsAsync()
