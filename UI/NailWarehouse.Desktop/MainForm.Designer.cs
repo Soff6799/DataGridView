@@ -245,7 +245,7 @@ partial class MainForm
 
     private System.Windows.Forms.DataGridViewTextBoxColumn ProductSize;
 
-    private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+    private new System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
 
     private System.Windows.Forms.DataGridViewTextBoxColumn Material;
     private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;

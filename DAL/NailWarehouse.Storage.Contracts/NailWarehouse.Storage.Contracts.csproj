@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="NailWarehouse.Models" Version="1.0.0" />
+      <ProjectReference Include="..\NailWarehouse.Models\NailWarehouse.Models.csproj" />
     </ItemGroup>
 
 </Project>

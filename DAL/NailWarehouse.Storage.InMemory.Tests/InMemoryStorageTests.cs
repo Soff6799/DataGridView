@@ -15,7 +15,7 @@ public class InMemoryStorageTests
     public void ConstructorShouldInitializeWithFourProducts()
     {
         // Arrange
-        var storage = new ProductStorage();
+        var storage = new InMemoryProductStorage();
 
         // Act
         var products = storage.Products;
@@ -33,7 +33,7 @@ public class InMemoryStorageTests
     public void ConstructorShouldNotHaveDuplicateProductNames()
     {
         // Arrange
-        var storage = new ProductStorage();
+        var storage = new InMemoryProductStorage();
 
         // Act
         var names = storage.Products.Select(p => p.Name);
@@ -49,7 +49,7 @@ public class InMemoryStorageTests
     public void AddShouldIncreaseProductsCount()
     {
         // Arrange
-        var storage = new ProductStorage();
+        var storage = new InMemoryProductStorage();
         var newProduct = new Product
         {
             Name = "Новый гвоздь",
@@ -71,7 +71,7 @@ public class InMemoryStorageTests
     public void GetProductWhenExistsShouldReturnCorrectProduct()
     {
         // Arrange
-        var storage = new ProductStorage();
+        var storage = new InMemoryProductStorage();
         const string targetName = "Гвоздь оцинкованный";
 
         // Act
@@ -89,7 +89,7 @@ public class InMemoryStorageTests
     public void GetProductWhenNotExistsShouldReturnNull()
     {
         // Arrange
-        var storage = new ProductStorage();
+        var storage = new InMemoryProductStorage();
         const string nonExistentName = "Несуществующий гвоздь";
 
         // Act
@@ -106,7 +106,7 @@ public class InMemoryStorageTests
     public void ProductsShouldAllowManualRemoval()
     {
         // Arrange
-        var storage = new ProductStorage();
+        var storage = new InMemoryProductStorage();
         var initialCount = storage.Products.Count;
         var productToRemove = storage.Products.First();
 
@@ -124,9 +124,8 @@ public class InMemoryStorageTests
     [Fact]
     public void ProductsShouldMaintainReferentialIntegrity()
     {
-
         // Arrange
-        var storage = new ProductStorage();
+        var storage = new InMemoryProductStorage();
         var productToModify = storage.Products.First();
         var oldName = productToModify.Name;
         const string newName = "Новое_Тестовое_Имя";
