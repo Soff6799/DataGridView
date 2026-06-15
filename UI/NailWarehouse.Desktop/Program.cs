@@ -1,10 +1,7 @@
 using NailWarehouse.Storage.Db;
-
 namespace NailWarehouse;
-
 using Services;
 using Services.Contracts;
-using Storage.InMemory;
 using System.Windows.Forms;
 using Microsoft.Extensions.Logging;
 using Serilog;
