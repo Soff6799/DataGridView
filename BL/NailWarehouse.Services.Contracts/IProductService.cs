@@ -27,4 +27,6 @@ public interface IProductService
     /// Рассчитывает и возвращает статистику по товарам.
     /// </summary>
     Task<(int count, decimal avgPrice, int totalQty, Product? deficit)> GetStatsAsync();
+
+    Task<Product?> GetByIdAsync(Guid id);
 }

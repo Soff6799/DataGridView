@@ -107,4 +107,18 @@ public class ProductServiceLogWrapper : IProductService
             loggerLog.LogInformation("Метод GetStats выполнен за {Elapsed} мс", sw.ElapsedMilliseconds);
         }
     }
+
+    public async Task<Product?> GetByIdAsync(Guid id)
+    {
+        var sw = Stopwatch.StartNew();
+        try
+        {
+            return await innerServiceLog.GetByIdAsync(id);
+        }
+        finally
+        {
+            sw.Stop();
+            loggerLog.LogInformation("Метод GetById выполнен за {Elapsed} мс", sw.ElapsedMilliseconds);
+        }
+    }
 }

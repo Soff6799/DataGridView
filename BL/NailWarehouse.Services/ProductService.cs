@@ -60,4 +60,9 @@ public class ProductService : IProductService
             list.OrderBy(p => p.Quantity).FirstOrDefault()
         );
     }
+
+    public async Task<Product?> GetByIdAsync(Guid id)
+    {
+        return await storage.GetProductAsync(id);
+    }
 }
