@@ -107,4 +107,21 @@ public class ProductServiceLogWrapper : IProductService
             loggerLog.LogInformation("Метод GetStats выполнен за {Elapsed} мс", sw.ElapsedMilliseconds);
         }
     }
+
+    /// <summary>
+    /// Асинхронно получает товар по идентификатору с замером времени выполнения операции
+    /// </summary>
+    public async Task<Product?> GetByIdAsync(Guid id)
+    {
+        var sw = Stopwatch.StartNew();
+        try
+        {
+            return await innerServiceLog.GetByIdAsync(id);
+        }
+        finally
+        {
+            sw.Stop();
+            loggerLog.LogInformation("Метод GetById выполнен за {Elapsed} мс", sw.ElapsedMilliseconds);
+        }
+    }
 }

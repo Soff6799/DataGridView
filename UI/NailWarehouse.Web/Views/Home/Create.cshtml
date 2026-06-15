@@ -1,0 +1,74 @@
+@model NailWarehouse.Models.Product
+@{
+    ViewData["Title"] = "Добавить новый продукт";
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center py-3">
+            <h3 class="mb-0 fw-bold">Новый продукт</h3>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Create" method="post">
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-semibold">Название продукта</label>
+                    <input asp-for="Name" class="form-control" required placeholder="Например: Гвозди строительные" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Size" class="form-label fw-semibold">Размер</label>
+                    <select asp-for="Size" class="form-select" id="selectSize" required placeholder="Например: 3.0x70">
+                        <option value="" disabled selected>Выберите размер...</option>
+                        <option>2.0х35</option>
+                        <option>2.5х50</option>
+                        <option>3.0х70</option>
+                        <option>3.5х90</option>
+                        <option>4.0х100</option>
+                        <option>4.5х120</option>
+                        <option value="Other">Другое...</option>
+                    </select>
+                    <input type="text" id="inputCustomSize" class="form-control mt-2 d-none" placeholder="Введите свой размер (например: 1.5х30)"/>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Material" class="form-label fw-semibold">Материал</label>
+                    <select asp-for="Material" class="form-select" id="selectMaterial" required>
+                        <option value="" disabled selected>Выберите материал...</option>
+                        <option value="медь">медь</option>
+                        <option value="сталь">сталь</option>
+                        <option value="железо">железо</option>
+                        <option value="хром">хром</option>
+                        <option value="Other">Другое...</option>
+                    </select>
+                    <input type="text" id="inputCustomMaterial" class="form-control mt-2 d-none" placeholder="Введите свой материал (например: титан)"/>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Quantity" class="form-label fw-semibold">Количество</label>
+                        <input asp-for="Quantity" type="number" class="form-control" required min="0" value="0" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="MinQuantity" class="form-label fw-semibold">Мин. количество</label>
+                        <input asp-for="MinQuantity" type="number" class="form-control" required min="0" value="0" />
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Price" class="form-label fw-semibold">Цена (за шт./уп.)</label>
+                    <div class="input-group">
+                        <input asp-for="Price" type="number" step="0.01" class="form-control" required min="0" value="0.00" />
+                        <span class="input-group-text">руб.</span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between gap-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary px-4">Отмена</a>
+                    <button type="submit" class="btn btn-success px-5">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

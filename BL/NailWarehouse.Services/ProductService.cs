@@ -39,7 +39,7 @@ public class ProductService : IProductService
     public async Task RemoveAsync(Product product) => await storage.TryDeleteAsync(product.Id);
 
     /// <summary>
-    /// Асинхронно обновляет данные товара.
+    /// Асинхронно пытается обновить данные существующего товара
     /// </summary>
     public async Task<bool> TryEditAsync(Product product) => await storage.TryEditAsync(product);
 
@@ -59,5 +59,13 @@ public class ProductService : IProductService
             list.Sum(p => p.Quantity),
             list.OrderBy(p => p.Quantity).FirstOrDefault()
         );
+    }
+
+    /// <summary>
+    /// Асинхронно находит и возвращает товар по его уникальному идентификатору.
+    /// </summary>
+    public async Task<Product?> GetByIdAsync(Guid id)
+    {
+        return await storage.GetProductAsync(id);
     }
 }

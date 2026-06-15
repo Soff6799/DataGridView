@@ -21,10 +21,18 @@ public interface IProductService
     /// </summary>
     Task RemoveAsync(Product product);
 
+    /// <summary>
+    /// Асинхронно пытается обновить данные существующего товара.
+    /// </summary>
     Task<bool> TryEditAsync(Product product);
 
     /// <summary>
     /// Рассчитывает и возвращает статистику по товарам.
     /// </summary>
     Task<(int count, decimal avgPrice, int totalQty, Product? deficit)> GetStatsAsync();
+
+    /// <summary>
+    /// Асинхронно находит и возвращает товар по его уникальному идентификатору.
+    /// </summary>
+    Task<Product?> GetByIdAsync(Guid id);
 }
