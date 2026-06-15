@@ -4,8 +4,6 @@
     ViewData["Title"] = "Редактировать продукт";
     var standardSizes = new List<string> { "2.0x35", "2.5x50", "3.0x70", "3.5x90", "4.0x100", "4.5x120" };
     var isCustomSize = !string.IsNullOrEmpty(Model.Size) && !standardSizes.Contains(Model.Size);
-
-    // Проверяем, является ли материал стандартным
     var standardMaterials = new List<string> { "медь", "сталь", "железо", "хром" };
     var isCustomMaterial = !string.IsNullOrEmpty(Model.Material) && !standardMaterials.Contains(Model.Material);
 }

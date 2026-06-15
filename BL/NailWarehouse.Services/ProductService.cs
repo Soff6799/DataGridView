@@ -39,7 +39,7 @@ public class ProductService : IProductService
     public async Task RemoveAsync(Product product) => await storage.TryDeleteAsync(product.Id);
 
     /// <summary>
-    /// Асинхронно обновляет данные товара.
+    /// Асинхронно пытается обновить данные существующего товара
     /// </summary>
     public async Task<bool> TryEditAsync(Product product) => await storage.TryEditAsync(product);
 
@@ -61,6 +61,9 @@ public class ProductService : IProductService
         );
     }
 
+    /// <summary>
+    /// Асинхронно находит и возвращает товар по его уникальному идентификатору.
+    /// </summary>
     public async Task<Product?> GetByIdAsync(Guid id)
     {
         return await storage.GetProductAsync(id);

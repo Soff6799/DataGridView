@@ -108,6 +108,9 @@ public class ProductServiceLogWrapper : IProductService
         }
     }
 
+    /// <summary>
+    /// Асинхронно получает товар по идентификатору с замером времени выполнения операции
+    /// </summary>
     public async Task<Product?> GetByIdAsync(Guid id)
     {
         var sw = Stopwatch.StartNew();
