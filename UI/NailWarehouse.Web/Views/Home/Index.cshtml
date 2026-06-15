@@ -1,0 +1,78 @@
+﻿@model IReadOnlyCollection<NailWarehouse.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-5 fw-bold text-dark">Склад продукции</h1>
+    <p class="text-muted">Система управления запасами гвоздей</p>
+    <a asp-controller="Home" asp-action="Create" class="btn btn-primary btn-lg">Добавить продукт</a>
+    <div class="card shadow-sm border-0 p-4 bg-white mt-4 rounded-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Размер</th>
+                <th scope="col">Материал</th>
+                <th scope="col">Количество</th>
+                <th scope="col">Мин.Количество</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Общая цена по количеству</th>
+                <th scope="col">Действие</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <input type="hidden" name="Id" value="@item.Id"/>
+                    <td>@item.Name</td>
+                    <td>@item.Size</td>
+                    <td>@item.Material</td>
+                    <td>@item.Quantity
+                        @if (item.Quantity>item.MinQuantity)
+                        {
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: @(item.Quantity)%;" aria-valuenow="@item.Quantity" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        }
+                        else{
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: @(item.Quantity)%;" aria-valuenow="@item.Quantity" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        }
+                    </td>
+                    <td>@item.MinQuantity</td>
+                    <td>@item.Price</td>
+                    <td>@item.TotalSum</td>
+                    <td class="align-middle">
+                    <div class="d-flex gap-2 justify-conter">
+                        <a class="btn btn-secondary btn-sm px-3" asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+                        <form asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline;">
+                            <button type="button" class="btn btn-danger btn-delete px=3" data-name="@item.Name">Удалить</button>
+                        </form>
+                    </div>
+                </tr>
+            }
+            </tbody>
+        </table>
+        </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Подтверждение удаления</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите удалить <strong id="productNameToDelete" class="text-danger"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirmDeleteBtn">Да</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+            </div>
+        </div>
+    </div>
+</div>
